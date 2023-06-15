@@ -1,0 +1,99 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="../../../imgs/icons/count.png" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="keywords"
+      content="java script, MINI-APPS, Radu Padurariu, SIIT, Digital Countdown"
+    />
+    <meta
+      name="description"
+      content="A digital Countdown made with Java Script"
+    />
+    <meta name="author" content="Radu Padurariu" />
+    <link rel="stylesheet" href="../../../style.css" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>DIGITAL COUNTDOWN</title>
+  </head>
+  <body>
+    <!-- Header -->
+    <nav class="header">
+      <div class="logo">
+        <a href="../../../index.html"
+          ><img
+            class="logo-img"
+            src="../../../imgs/logo.png"
+            alt="logo-missing"
+        /></a>
+      </div>
+      <!-- Navigation -->
+      <ul class="navbar">
+        <li class="lead">
+          <button class="nav-btn p">
+            <a href="../../../html/contact/index.html">CONTACT</a>
+          </button>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Main body -->
+    <main class="main-contact">
+      <div class="container-digital">
+        <h1 class="x-large m-3 text-center">DIGITAL COUNTDOWN</h1>
+
+        <div class="counter-container">
+          <div class="data-container">
+            <input
+              id="countdown-title"
+              type="text"
+              maxlength="24"
+              placeholder="Countdown title:"
+            />
+            <input id="countdown-date" type="datetime-local" />
+            <span class="countdown-error">Please select a later date!</span>
+          </div>
+
+          <div class="countdownDisplay-container">
+            <span class="display-title">Diablo 4 release date</span>
+
+            <div class="digits">
+              <div class="digits-container">
+                <span id="days">00 </span>
+                <span class="small">DAYS</span>
+              </div>
+
+              <div class="digits-container">
+                <div><span>:</span><span id="hours">00 </span></div>
+
+                <span class="small">HRS</span>
+              </div>
+
+              <div class="digits-container">
+                <div>
+                  <span>:</span><span id="minutes">00</span><span>:</span>
+                </div>
+                <span class="small">MINS</span>
+              </div>
+
+              <div class="digits-container">
+                <span id="seconds">00</span>
+                <span class="small">SECS</span>
+              </div>
+            </div>
+            <span class="countdown-finish">Countdown finished!</span>
+          </div>
+        </div>
+        <div class="btn-container">
+          <button type="submit" id="btn-create">CREATE</button>
+          <button type="submit" id="btn-reset">RESET</button>
+        </div>
+      </div>
+    </main>
+    <!-- Footer -->
+    <footer class="p-1">&copy copywrite 2022 - Radu Padurariu</footer>
+
+    <script src="./main.js"></script>
+  </body>
+</html>

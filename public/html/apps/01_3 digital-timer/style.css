@@ -4,7 +4,7 @@
     margin:auto 0;
 }
 
-.container-digital-timer {
+.container-digital {
     display:flex;
     flex-direction: column;
     justify-content: space-around;
@@ -19,7 +19,7 @@
 }
 
 @media (max-width:800px) {
-    .container-digital-timer {
+    .container-digital {
         max-width: 95%;
     }
 }
