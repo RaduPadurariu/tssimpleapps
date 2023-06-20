@@ -11,27 +11,56 @@ const hoursCountElem = document.getElementById("hours");
 const minutesCountElem = document.getElementById("minutes");
 const secondsCountsElem = document.getElementById("seconds");
 const dateCountsElem = document.getElementById('days');
+const countDownErrorElem = document.querySelector(".countdown-error");
+const countDownFinishElem = document.querySelector(".countdown-finish");
 //Global Variables
+let countDown;
 //Functions
 const formatCountTime = (value) => value < 10 ? "0" + value : `${value}`;
 const createCountdown = () => {
+    const actualCountDownTime = new Date().getTime();
+    const dateCountDown = new Date(inputDateElem.value).getTime();
+    if (inputTitleElem.value === "") {
+        countDownErrorElem.innerText = "Please insert a countdown title!";
+        setTimeout(() => {
+            countDownErrorElem.innerText = "";
+        }, 2000);
+    }
+    else if (!inputDateElem.value === true || (actualCountDownTime - dateCountDown) > 0) {
+        countDownErrorElem.innerText = "Please select a future date!";
+        setTimeout(() => {
+            countDownErrorElem.innerText = "";
+        }, 2000);
+    }
+    else {
+        saveCountDown(inputTitleElem.value, dateCountDown);
+    }
+};
+const renderCountDown = (value) => {
     btnCreateElem.style.display = "none";
     btnResetElem.style.display = "block";
     dataContainerElem.style.display = "none";
     countdownContainerElem.style.display = "flex";
-    displayTitleElem.innerHTML = inputTitleElem.value;
-    startCountDown();
+    displayTitleElem.innerText = value.name;
+    countDown = setInterval(() => {
+        updateTimeCountDown(value);
+    }, 1000);
+    return countDown;
 };
 const resetCountdown = () => {
     btnResetElem.style.display = "none";
     btnCreateElem.style.display = "block";
     countdownContainerElem.style.display = "none";
     dataContainerElem.style.display = "flex";
+    inputTitleElem.value = "";
+    inputDateElem.value = "";
+    localStorage.removeItem('countdown');
+    clearInterval(countDown);
+    countDownFinishElem.innerText = "";
 };
-const updateTimeCountDown = () => {
-    const dateCountDown = new Date(inputDateElem.value).getTime();
+const updateTimeCountDown = (value) => {
     const actualCountDownTime = new Date().getTime();
-    const gap = dateCountDown - actualCountDownTime;
+    let gap = value.time - actualCountDownTime;
     const secondCountDown = 1000;
     const minuteCountDown = secondCountDown * 60;
     const hourCountDown = minuteCountDown * 60;
@@ -44,10 +73,40 @@ const updateTimeCountDown = () => {
     hoursCountElem.innerText = formatCountTime(textHour);
     minutesCountElem.innerText = formatCountTime(textMinute);
     secondsCountsElem.innerText = formatCountTime(textSecond);
+    if (gap < 1001) {
+        clearInterval(countDown);
+        countDownFinishElem.innerText = "Countdown finished!";
+        dateCountsElem.innerText = "00";
+        hoursCountElem.innerText = "00";
+        minutesCountElem.innerText = "00";
+        secondsCountsElem.innerText = "00";
+    }
 };
-let startCountDown = () => {
-    let countDown = setInterval(updateTimeCountDown, 1000);
-    return countDown;
+const getCountDown = () => {
+    // is there a countdown in local storage?
+    let savedCountDown;
+    if (localStorage.getItem('countdown') === null) {
+        savedCountDown = { name: "", time: 0 };
+    }
+    else {
+        savedCountDown = JSON.parse(localStorage.getItem("countdown") || "{}");
+        renderCountDown(savedCountDown);
+    }
+};
+getCountDown();
+const saveCountDown = (title, time) => {
+    // is there a countdown in local storage?
+    let savedCountDown;
+    if (localStorage.getItem('countdown') === null) {
+        savedCountDown = { name: "", time: 0 };
+    }
+    else {
+        savedCountDown = JSON.parse(localStorage.getItem("todos") || "{}");
+    }
+    let localCountDown;
+    localCountDown = { name: title, time: time };
+    localStorage.setItem("countdown", JSON.stringify(localCountDown));
+    getCountDown();
 };
 //Events
 btnCreateElem.addEventListener('click', createCountdown);
