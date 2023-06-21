@@ -53,10 +53,23 @@
     margin: 3rem 0 6rem 0;
     font-weight: bold;
 }
+
+
+
 .monthYear div {
     margin: 0 1.5rem;
 }
 .monthYear span {
     margin: 0 0.3rem;
 }
-
+@media (max-width:550px) {
+    .monthYear {
+        flex-direction: column;
+    }
+    .monthYear div {
+        margin-bottom: 1rem;
+    }
+    .digit-font {
+        font-size: 3rem;
+    }
+}

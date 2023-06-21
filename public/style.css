@@ -194,6 +194,9 @@ a {
     max-width: 950px;
 }
 
+h1 {
+    font-size: 4rem;
+}
 @media (max-width: 770px) {
     .header {
         padding: 0 10px;

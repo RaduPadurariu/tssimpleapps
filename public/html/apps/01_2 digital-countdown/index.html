@@ -41,7 +41,7 @@
     <!-- Main body -->
     <main class="main-contact">
       <div class="container-digital">
-        <h1 class="x-large m-3 text-center">DIGITAL COUNTDOWN</h1>
+        <h1 class="m-3 text-center">DIGITAL COUNTDOWN</h1>
 
         <div class="counter-container">
           <div class="data-container">
@@ -51,38 +51,43 @@
               maxlength="24"
               placeholder="Countdown title:"
             />
-            <input required id="countdown-date" type="datetime-local" />
-            <span class="countdown-error"></span>
+            <input id="countdown-date" type="datetime-local" />
+            <span class="countdown-error responsiveCD-texts"></span>
           </div>
 
           <div class="countdownDisplay-container">
-            <span class="display-title"></span>
+            <span class="display-title responsiveCD-texts"></span>
 
             <div class="digits">
               <div class="digits-container">
-                <span id="days">00 </span>
+                <span id="days" class="digit-font">00 </span>
                 <span class="small">DAYS</span>
               </div>
 
               <div class="digits-container">
-                <div><span>:</span><span id="hours">00 </span></div>
+                <div>
+                  <span class="digit-font">:</span
+                  ><span id="hours" class="digit-font">00 </span>
+                </div>
 
                 <span class="small">HRS</span>
               </div>
 
               <div class="digits-container">
                 <div>
-                  <span>:</span><span id="minutes">00</span><span>:</span>
+                  <span class="digit-font">:</span
+                  ><span id="minutes" class="digit-font">00</span
+                  ><span class="digit-font">:</span>
                 </div>
                 <span class="small">MINS</span>
               </div>
 
               <div class="digits-container">
-                <span id="seconds">00</span>
+                <span id="seconds" class="digit-font">00</span>
                 <span class="small">SECS</span>
               </div>
             </div>
-            <span class="countdown-finish"></span>
+            <span class="countdown-finish responsiveCD-texts"></span>
           </div>
         </div>
         <div class="btn-container">
