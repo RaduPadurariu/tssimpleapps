@@ -1,0 +1,82 @@
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" href="../../../imgs/icons/finance.png" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="keywords"
+      content="java script, MINI-APPS, Radu Padurariu, SIIT, Finance Logger"
+    />
+    <meta name="description" content="A finance logger made with Type Script" />
+    <meta name="author" content="Radu Padurariu" />
+    <link rel="stylesheet" href="../../../style.css" />
+    <link rel="stylesheet" href="./style.css" />
+    <title>FINANCE LOGGER</title>
+  </head>
+  <body>
+    <!-- Header -->
+    <nav class="header">
+      <div class="logo">
+        <a href="../../../index.html"
+          ><img
+            class="logo-img"
+            src="../../../imgs/logo.png"
+            alt="logo-missing"
+        /></a>
+      </div>
+      <!-- Navigation -->
+      <ul class="navbar">
+        <li class="lead">
+          <button class="nav-btn p">
+            <a href="../../../html/contact/index.html">CONTACT</a>
+          </button>
+        </li>
+      </ul>
+    </nav>
+
+    <!-- Main body -->
+    <main class="main-contact">
+      <div class="container-digital">
+        <h1 class="x-large m-2 text-center">FINANCE LOGGER</h1>
+
+        <div class="finance-container">
+          <form class="new-item-form">
+            <div class="finance-data flex">
+              <div class="field payment-type">
+                <label for="payment-type">Type:</label>
+                <select id="payment-type">
+                  <option value="invoice">Invoice</option>
+                  <option value="payment">Payment</option>
+                </select>
+              </div>
+              <div class="field payment-tofrom">
+                <label for="payment-tofrom">To / From:</label>
+                <input type="text" id="payment-tofrom" />
+              </div>
+
+              <div class="field payment-amount">
+                <label for="payment-amount">Amount (£):</label>
+                <input type="number" id="payment-amount" />
+              </div>
+            </div>
+            <div class="finance-description flex">
+              <div class="field payment-details">
+                <label for="payment-details">Details:</label>
+                <input type="text" id="payment-details" />
+              </div>
+              <button>Add</button>
+            </div>
+          </form>
+          <ul class="paymentList">
+            Aici vor aparea platile
+          </ul>
+        </div>
+      </div>
+    </main>
+    <!-- Footer -->
+    <footer class="p-1">&copy copywrite 2023 - Radu Padurariu</footer>
+
+    <script src="./main.js"></script>
+  </body>
+</html>
