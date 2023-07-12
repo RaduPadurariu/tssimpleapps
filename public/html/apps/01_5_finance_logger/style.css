@@ -7,7 +7,7 @@
 .container-digital {
     display:flex;
     flex-direction: column;
-    justify-content: space-around;
+    justify-content: flex-start;
     align-items: center;
     background: #ebf3a7;
     border-radius: 10px;
@@ -16,6 +16,8 @@
     margin:1rem 0;
     text-align: center;
     box-shadow: 3px 3px 5px 2px #888888;
+    height: 45rem;
+    overflow: auto;
 }
 
 @media (max-width:800px) {
@@ -27,7 +29,7 @@
 .finance-container {
     display: flex;
     flex-direction: column;
-   
+    margin-bottom: 1rem;
 }
 
 
@@ -48,7 +50,7 @@
 .finance-description {
     justify-content: space-between;
     align-items: flex-end;
-    margin-bottom: 2rem;
+    
     flex-wrap: wrap;
 }
 
@@ -65,7 +67,7 @@
 }
 
 #payment-details {
-    width: 18.2rem;
+    width: 23rem;
     margin-bottom: 1.5rem;
 }
 label {
@@ -86,40 +88,82 @@ input {
     margin-top: 1px;
 }
 
+.finance-errorContainer {
+    height: 2rem;
+    color: rgb(196, 79, 79);
+    font-weight: bold;
+}
+
+
+
+
 /* List of payments */
 
-ul {
+.paymentList {
     padding: 0;
     list-style-type: none;
-}
-li {
-    padding: 6px 10px;
-    border: 1px solid #eee;
-    margin: 10px auto;
+    width:35rem
 }
 
-li h4 {
-    color: #ff0aa7;
-    margin: 0;
+.li-finance {
+    display: flex;
+    flex-direction: column;
+    margin: 1.5rem 0.5rem;
+}
+
+.li-finance div {
+    display: flex;
+    justify-content: space-between;
+}
+
+.li-finance div h4 {
+    text-align: left;
     text-transform: capitalize;
-}   
-
-li p{
-  color: #333;
-  margin: 8px 0 0;
+    font-size: 1.3rem;
+    color: darkgreen;
 }
+
+.li-finance div span {
+    font-weight: bold;
+}
+
+.li-finance p {
+    text-align: left;
+    font-size: 1.1rem;
+    max-width: 30rem;
+}
+
+.deleteFinance {
+    outline: none;
+    border: none;
+    padding: 0.2rem 0.8rem;
+    color: #444444;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
 
 /* Add button */
 
-button {
+.add-finance-btn {
     color: white;
     border: 0;
     outline: none;
-    background: #02be3b;
+    background: darkgreen;
     padding: 0 1rem;
     height: 2.5rem;
     border-radius: 4px;
     font-size: 1.5rem;
     margin:0 1rem 1.5rem 1rem;
     max-width: 5rem;
+    cursor: pointer;
+}
+
+@media (max-width:700px) {
+    .paymentList {
+        width: 100%;
+    }
+    #payment-details {
+        width: 18.2rem;
+    }
 }

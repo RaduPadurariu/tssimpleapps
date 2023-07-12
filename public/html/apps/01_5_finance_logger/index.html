@@ -38,7 +38,7 @@
     <!-- Main body -->
     <main class="main-contact">
       <div class="container-digital">
-        <h1 class="x-large m-2 text-center">FINANCE LOGGER</h1>
+        <h1 class="x-large m-3 text-center">FINANCE LOGGER</h1>
 
         <div class="finance-container">
           <form class="new-item-form">
@@ -52,31 +52,30 @@
               </div>
               <div class="field payment-tofrom">
                 <label for="payment-tofrom">To / From:</label>
-                <input type="text" id="payment-tofrom" />
+                <input type="text" id="payment-tofrom" maxlength="25" />
               </div>
 
               <div class="field payment-amount">
                 <label for="payment-amount">Amount (£):</label>
-                <input type="number" id="payment-amount" />
+                <input type="number" id="payment-amount" max="10000" />
               </div>
             </div>
             <div class="finance-description flex">
               <div class="field payment-details">
                 <label for="payment-details">Details:</label>
-                <input type="text" id="payment-details" />
+                <input type="text" id="payment-details" maxlength="35" />
               </div>
-              <button>Add</button>
+              <button class="add-finance-btn">Add</button>
             </div>
+            <div class="finance-errorContainer"></div>
           </form>
-          <ul class="paymentList">
-            Aici vor aparea platile
-          </ul>
+          <ul class="paymentList"></ul>
         </div>
       </div>
     </main>
     <!-- Footer -->
     <footer class="p-1">&copy copywrite 2023 - Radu Padurariu</footer>
 
-    <script src="./main.js"></script>
+    <script type="module" src="./main.js"></script>
   </body>
 </html>
