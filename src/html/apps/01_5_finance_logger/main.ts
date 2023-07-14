@@ -15,7 +15,18 @@ const amountFinanceElem = document.querySelector("#payment-amount") as HTMLInput
 const ulFinanceElem = document.querySelector('.paymentList') as HTMLUListElement;
 
 
-// Global Variables
+// Interfaces
+interface IsFinanceObj {
+    id: number,
+    type: string,
+    client: string,
+    details: string,
+    amount: number
+}
+
+// Tuples
+
+let financeTupObj: [number, string, string, string, number]
 
 
 // Functions
@@ -29,16 +40,17 @@ const getFinanceLogs = () => {
     }
     else {
         savedFinance = JSON.parse(localStorage.getItem("finance") || "[]");
-        console.log(savedFinance)
-        savedFinance.forEach((el:{id: number, type:string, client:string, details:string, amount:number}) => {
+        savedFinance.forEach((el:IsFinanceObj) => {
             let doc:HasFormatter;
+            
+            financeTupObj = [el.id, el.type, el.client, el.details, el.amount]
             if (el.type === "invoice") {
-                doc = new Invoice(el.id, el.type, el.client, el.details, el.amount);
+                doc = new Invoice(...financeTupObj);
                 const listFinance = new ListTemplate(ulFinanceElem);
                 listFinance.render(doc, "start");
             }
             else {
-                doc = new Payment(el.id, el.type, el.client, el.details, el.amount)
+                doc = new Payment(...financeTupObj)
                 const listFinance = new ListTemplate(ulFinanceElem);
                 listFinance.render(doc, "start");
             }
@@ -59,7 +71,7 @@ const removeFinance = (val:number) => {
     else {
         savedFinance = JSON.parse(localStorage.getItem("finance") || "[]");
     }
-    savedFinance.splice(savedFinance.findIndex((el:{id: number, type:string, client:string, details:string, amount:number}) => el.id === val), 1);
+    savedFinance.splice(savedFinance.findIndex((el:IsFinanceObj) => el.id === val), 1);
     localStorage.setItem("finance", JSON.stringify(savedFinance));
     getFinanceLogs()
 }
