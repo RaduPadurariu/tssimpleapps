@@ -7,8 +7,10 @@ const typeFinanceElem = document.querySelector("#payment-type");
 const toFromElem = document.querySelector("#payment-tofrom");
 const detailsFinanceElem = document.querySelector("#payment-details");
 const amountFinanceElem = document.querySelector("#payment-amount");
+const errFinanceElem = document.querySelector('.finance-errorContainer');
 const ulFinanceElem = document.querySelector('.paymentList');
-// Global Variables
+// Tuples
+let financeTupObj;
 // Functions
 const getFinanceLogs = () => {
     // is there a finance in local storage?
@@ -19,16 +21,16 @@ const getFinanceLogs = () => {
     }
     else {
         savedFinance = JSON.parse(localStorage.getItem("finance") || "[]");
-        console.log(savedFinance);
         savedFinance.forEach((el) => {
             let doc;
+            financeTupObj = [el.id, el.type, el.client, el.details, el.amount];
             if (el.type === "invoice") {
-                doc = new Invoice(el.id, el.type, el.client, el.details, el.amount);
+                doc = new Invoice(...financeTupObj);
                 const listFinance = new ListTemplate(ulFinanceElem);
                 listFinance.render(doc, "start");
             }
             else {
-                doc = new Payment(el.id, el.type, el.client, el.details, el.amount);
+                doc = new Payment(...financeTupObj);
                 const listFinance = new ListTemplate(ulFinanceElem);
                 listFinance.render(doc, "start");
             }
@@ -70,6 +72,12 @@ formFinanceElem.addEventListener('submit', (e) => {
         toFromElem.value = "";
         detailsFinanceElem.value = "";
         amountFinanceElem.value = "";
+    }
+    else {
+        errFinanceElem.innerText = "Please complete all fields!";
+        setTimeout(() => {
+            errFinanceElem.innerText = "";
+        }, 1500);
     }
 });
 ulFinanceElem.addEventListener('click', (e) => {

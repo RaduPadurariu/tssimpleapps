@@ -11,9 +11,8 @@ const typeFinanceElem = document.querySelector("#payment-type") as HTMLSelectEle
 const toFromElem = document.querySelector("#payment-tofrom") as HTMLInputElement;
 const detailsFinanceElem = document.querySelector("#payment-details") as HTMLInputElement;
 const amountFinanceElem = document.querySelector("#payment-amount") as HTMLInputElement;
-
+const errFinanceElem = document.querySelector('.finance-errorContainer') as HTMLSpanElement
 const ulFinanceElem = document.querySelector('.paymentList') as HTMLUListElement;
-
 
 // Interfaces
 interface IsFinanceObj {
@@ -92,7 +91,7 @@ formFinanceElem.addEventListener('submit', (e: Event) => {
         savedFinance = JSON.parse(localStorage.getItem("finance") || "[]");
     }
     if( toFromElem.value.replace(/\ /g, "").length > 0 && detailsFinanceElem.value.replace(/\ /g, "").length > 0) {
-        let financeLog:{id: number, type:string, client:string, details: string, amount:number};
+        let financeLog:IsFinanceObj;
         financeLog = {id: Date.now(), type: typeFinanceElem.value, client:toFromElem.value.trim(), details: detailsFinanceElem.value.trim(), amount: amountFinanceElem.valueAsNumber || 0};
         savedFinance.push(financeLog);
         localStorage.setItem("finance", JSON.stringify(savedFinance));
@@ -100,6 +99,12 @@ formFinanceElem.addEventListener('submit', (e: Event) => {
         toFromElem.value = ""
         detailsFinanceElem.value = "";
         amountFinanceElem.value = "";
+    }
+    else {
+        errFinanceElem.innerText = "Please complete all fields!"
+        setTimeout(() => {
+            errFinanceElem.innerText = ""
+        }, 1500)
     }
     
 

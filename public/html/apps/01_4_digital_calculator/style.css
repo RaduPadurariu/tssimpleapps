@@ -9,7 +9,7 @@
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    background: #dbd8d2;
+    background: #e3f9ff;
     border-radius: 10px;
     width: 100%;
     max-width: 750px;
@@ -18,58 +18,61 @@
     box-shadow: 3px 3px 5px 2px #888888;
 }
 
-@media (max-width:800px) {
-    .container-digital {
-        max-width: 95%;
-    }
-}
-.digits {
-    display: flex;
-    align-items: center;
+.calculator-container {
+    background: #3a4452;
+    border-radius: 10px;
+    padding: 20px;
+    font-family: sans-serif;
+    display: grid;
     justify-content: center;
-    font-size: 5rem;
-    margin-bottom: 1rem;
+    align-content: center;
+    grid-template-columns: repeat(4, 85px);
+    grid-template-rows: minmax(auto, auto) repeat(5, 85px);
+    
 }
 
-.digits-container {
+.calculator-container > button {
+    border: 0;
+    outline: 0;
+    border-radius: 10px;
+    box-shadow: -8px -8px 15px rgba(255, 255, 255, 0.1), 5px 5px 15px rgba(0, 0 , 0, 0.2);
+    background: transparent;
+    font-size: 1.2rem;
+    color: white;
+    cursor: pointer;
+    margin: 10px;
+}
+
+.calc-output {
+    grid-column: 1 / -1;
     display: flex;
     flex-direction: column;
-    text-align: center;
+    align-items: flex-end;
+    justify-content: space-around;
+    padding: 10px 0;
+    word-wrap: break-word;
+    word-break: break-all;
+    
 }
 
 
-.counter-container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-   margin-top: 3rem;
+.calc-output .previous-operand {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 1.5rem;
+    padding: 10px;
 }
 
+.calc-output .current-operand {
+    color: white;
+    font-size: 2.5rem;
+    padding: 10px;
 
-.monthYear {
-    display: flex;
-    justify-content: space-between;
-    font-size: 2rem;
-    margin: 3rem 0 6rem 0;
-    font-weight: bold;
 }
 
-
-
-.monthYear div {
-    margin: 0 1.5rem;
+.calculator-container .col-operator {
+    color: #33ffd8;
 }
-.monthYear span {
-    margin: 0 0.3rem;
-}
-@media (max-width:550px) {
-    .monthYear {
-        flex-direction: column;
-    }
-    .monthYear div {
-        margin-bottom: 1rem;
-    }
-    .digit-font {
-        font-size: 3rem;
-    }
+
+.calculator-container .span-two {
+    grid-column: span 2;
 }
