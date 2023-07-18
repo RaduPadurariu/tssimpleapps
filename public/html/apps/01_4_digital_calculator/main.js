@@ -2,12 +2,16 @@ import { Calculator } from "./classes/calculator.js";
 // Selectors
 const numberButtonsElem = document.querySelectorAll('[data-number]');
 const operationButtonsElem = document.querySelectorAll('[data-operation]');
+const advanceOpButtonElem = document.querySelectorAll('[data-advanceOp]');
 const equalButtonElem = document.querySelector('[data-equals]');
 const deleteButtonElem = document.querySelector('[data-delete]');
 const allClearButtonElem = document.querySelector('[data-all-clear]');
 const previousOperandTextElem = document.querySelector('[data-previous-operand]');
 const currentOperandTextElem = document.querySelector('[data-current-operand]');
-console.log(previousOperandTextElem);
+const advanceButtonElem = document.querySelector('#advanceBtn');
+const advanceCalcContainerElem = document.querySelector('.calcAdv-container');
+const calcContainerElem = document.querySelector('.calculator-container');
+const xSquareYButtonElem = document.querySelector('[data-squareY]');
 const calculator = new Calculator(previousOperandTextElem, currentOperandTextElem);
 numberButtonsElem.forEach(button => {
     button.addEventListener('click', () => {
@@ -21,8 +25,14 @@ operationButtonsElem.forEach(button => {
         calculator.updateDisplayCalc();
     });
 });
+advanceOpButtonElem.forEach(button => {
+    button.addEventListener('click', () => {
+        calculator.advanceCalc(button.innerHTML);
+        calculator.updateDisplayCalc();
+    });
+});
 equalButtonElem.addEventListener('click', button => {
-    calculator.computeCalc();
+    calculator.computeCalc(true);
     calculator.updateDisplayCalc();
 });
 allClearButtonElem.addEventListener('click', button => {
@@ -32,4 +42,8 @@ allClearButtonElem.addEventListener('click', button => {
 deleteButtonElem.addEventListener('click', button => {
     calculator.deleteCalc();
     calculator.updateDisplayCalc();
+});
+advanceButtonElem.addEventListener('click', () => {
+    advanceCalcContainerElem.classList.toggle('showAdvCalc');
+    calcContainerElem.classList.toggle('hideAdvCalc');
 });

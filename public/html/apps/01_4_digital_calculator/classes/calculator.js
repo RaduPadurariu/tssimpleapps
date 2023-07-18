@@ -3,6 +3,7 @@ export class Calculator {
         this.currentOperand = "";
         this.previousOperand = "";
         this.operation = "";
+        this.equalFlag = false;
         this.previousOpElem = previousOpElem;
         this.currentOpElem = currentOpElem;
         this.clearCalc();
@@ -18,19 +19,16 @@ export class Calculator {
     appendNrCalc(number) {
         if (number === "." && this.currentOperand.includes("."))
             return;
-        this.currentOperand = this.currentOperand + number;
-    }
-    chooseOperationCalc(operation) {
-        if (this.currentOperand === "")
-            return;
-        if (this.previousOperand !== "") {
-            this.computeCalc();
+        if (this.equalFlag) {
+            this.currentOperand = "" + (number === "π" ? Math.PI.toString() : number);
+            this.equalFlag = false;
         }
-        this.operation = operation;
-        this.previousOperand = this.currentOperand;
-        this.currentOperand = "";
+        else
+            this.currentOperand = this.currentOperand + (number === "π" ? Math.PI.toString() : number);
     }
-    computeCalc() {
+    computeCalc(value) {
+        if (value)
+            this.equalFlag = true;
         let computation;
         const prevValue = parseFloat(this.previousOperand);
         const currentValue = parseFloat(this.currentOperand);
@@ -54,6 +52,16 @@ export class Calculator {
         this.currentOperand = computation + "";
         this.operation = "";
         this.previousOperand = "";
+    }
+    chooseOperationCalc(operation) {
+        if (this.currentOperand === "")
+            return;
+        if (this.previousOperand !== "") {
+            this.computeCalc(false);
+        }
+        this.operation = operation;
+        this.previousOperand = this.currentOperand;
+        this.currentOperand = "";
     }
     getDisplayNumberCalc(number) {
         const stringNumber = number;
@@ -83,5 +91,26 @@ export class Calculator {
         else {
             this.previousOpElem.innerText = "";
         }
+    }
+    advanceCalc(advOp) {
+        if (this.currentOperand === "")
+            return;
+        console.log(advOp);
+        let computation;
+        const prevValue = parseFloat(this.previousOperand);
+        const currentValue = parseFloat(this.currentOperand);
+        switch (advOp) {
+            case "%":
+                computation = (isNaN(prevValue) ? 0 : (prevValue * (currentValue / 100)));
+                break;
+            case "x<sup>2</sup>":
+                computation = Math.pow(currentValue, 2);
+                break;
+            case "2√x":
+                computation = Math.sqrt(currentValue);
+                break;
+            default: return;
+        }
+        this.currentOperand = computation + "";
     }
 }

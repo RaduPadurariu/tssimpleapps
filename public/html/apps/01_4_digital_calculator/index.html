@@ -41,7 +41,7 @@
     <!-- Main body -->
     <main class="main-contact">
       <div class="container-digital">
-        <h1 class="x-large m-3 text-center">CALCULATOR</h1>
+        <h1 class="m-3 text-center">CALCULATOR</h1>
 
         <div class="calculator-container">
           <div class="calc-output">
@@ -50,7 +50,7 @@
           </div>
           <button class="col-operator" data-all-clear>AC</button>
           <button class="col-operator" data-delete>DEL</button>
-          <button class="col-operator" data-number>%</button>
+          <button class="col-operator" data-advanceOp>%</button>
           <button class="col-operator" data-operation>/</button>
           <button data-number>7</button>
           <button data-number>8</button>
@@ -67,16 +67,17 @@
           <button data-number>.</button>
           <button data-number>0</button>
           <button class="span-two col-operator" data-equals>=</button>
+          <div class="calc-advance"><span id="advanceBtn">advance</span></div>
         </div>
         <div class="calcAdv-container">
-          <button></button>
-          <button></button>
-          <button></button>
-          <button></button>
-          <button></button>
-          <button></button>
-          <button></button>
-          <button></button>
+          <button class="col-operator" data-advanceOp>x<sup>2</sup></button>
+          <button class="col-operator" data-advanceOp>2√x</button>
+          <button class="col-operator" data-advanceOp>x<sup>y</sup></button>
+          <button class="col-operator" data-operation>log</button>
+          <button class="col-operator" data-number>π</button>
+          <button class="col-operator" data-operation>sin</button>
+          <button class="col-operator" data-operation>cos</button>
+          <button class="col-operator" data-operation>tan</button>
         </div>
       </div>
     </main>

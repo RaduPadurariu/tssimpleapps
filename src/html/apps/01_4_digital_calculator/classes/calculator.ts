@@ -4,6 +4,8 @@ export class Calculator {
     currentOperand: string = "";
     previousOperand: string ="";
     operation: string = "";
+    equalFlag:boolean = false;
+
 
     constructor (previousOpElem: HTMLDataElement, currentOpElem:HTMLDataElement) {
         this.previousOpElem = previousOpElem;
@@ -13,7 +15,7 @@ export class Calculator {
     clearCalc () {
        this.currentOperand = "";
        this.previousOperand = "";
-       this.operation = ""
+       this.operation = "";
     }
 
     deleteCalc() {
@@ -22,20 +24,16 @@ export class Calculator {
 
     appendNrCalc (number:string) {
         if (number === "." && this.currentOperand.includes(".")) return 
-        this.currentOperand = this.currentOperand + number
-    }
-
-    chooseOperationCalc (operation:string) {
-        if (this.currentOperand === "") return 
-        if (this.previousOperand !== "") {
-            this.computeCalc()
+        if(this.equalFlag) {
+            this.currentOperand = "" + (number === "π" ? Math.PI.toString() : number)
+            this.equalFlag = false 
         }
-        this.operation = operation;
-        this.previousOperand = this.currentOperand
-        this.currentOperand = ""
+        else this.currentOperand = this.currentOperand + (number === "π" ? Math.PI.toString() : number)  
+           
     }
 
-    computeCalc () {
+    computeCalc (value:boolean) {
+        if (value) this.equalFlag = true
         let computation: number;
         const prevValue = parseFloat(this.previousOperand)
         const currentValue = parseFloat(this.currentOperand)
@@ -55,6 +53,18 @@ export class Calculator {
         this.operation = ""
         this.previousOperand = ""
     }
+
+    chooseOperationCalc (operation:string) {
+        if (this.currentOperand === "") return 
+       
+        if (this.previousOperand !== "") {
+            this.computeCalc(false)
+        }
+        this.operation = operation;
+        this.previousOperand = this.currentOperand
+        this.currentOperand = ""
+    }
+
 
     getDisplayNumberCalc(number:string) {
         const stringNumber = number;
@@ -85,6 +95,27 @@ export class Calculator {
         else {
             this.previousOpElem.innerText = ""
         }
+    }
+
+    advanceCalc(advOp:string) {
+        if (this.currentOperand === "") return        
+
+            console.log(advOp)
+            let computation: number;
+            const prevValue = parseFloat(this.previousOperand)
+            const currentValue = parseFloat(this.currentOperand)
+            switch (advOp) {
+                case "%" : computation = (isNaN(prevValue) ? 0 : (prevValue* (currentValue/100)))
+                break
+                case "x<sup>2</sup>" : computation = currentValue**2
+                break
+                case "2√x" : computation = Math.sqrt(currentValue)
+                break
+                default: return 
+            }
+            this.currentOperand = computation + ""
+        
+        
     }
 
 }
