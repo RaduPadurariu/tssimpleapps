@@ -18,9 +18,9 @@ const xSquareYButtonElem = document.querySelector('[data-squareY]') as HTMLDataE
 const calculator = new Calculator(previousOperandTextElem, currentOperandTextElem)
 
 numberButtonsElem.forEach(button => {
-    button.addEventListener('click', () => {
-        calculator.appendNrCalc(button.innerHTML)
-        calculator.updateDisplayCalc()
+    button.addEventListener('click', (e:Event) => {
+            calculator.appendNrCalc(button.innerHTML)
+            calculator.updateDisplayCalc()
     })
 })
 
@@ -55,7 +55,31 @@ deleteButtonElem.addEventListener('click', button => {
     calculator.updateDisplayCalc()
 })
 
+// Add keywords events
+document.body.addEventListener('keyup', (e) => {
+    if (/\d|\./g.test(e.key)) {
+        calculator.appendNrCalc(e.key)
+        calculator.updateDisplayCalc()
+    }
+    if (/[\+\-\*\/]/g.test(e.key)) {
+        calculator.chooseOperationCalc(e.key)
+        calculator.updateDisplayCalc()
+    }
+    if(e.key === "Enter") {
+        calculator.computeCalc(true)
+        calculator.updateDisplayCalc()
+    }
 
+    if(e.key === "Backspace") {
+        calculator.deleteCalc()
+        calculator.updateDisplayCalc()
+    }
+    if(e.key === "Delete") {
+        calculator.clearCalc()
+        calculator.updateDisplayCalc()
+    }
+    console.log(e.key)
+})  
 
 
 advanceButtonElem.addEventListener('click', () => {

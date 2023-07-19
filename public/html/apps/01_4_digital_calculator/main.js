@@ -14,7 +14,7 @@ const calcContainerElem = document.querySelector('.calculator-container');
 const xSquareYButtonElem = document.querySelector('[data-squareY]');
 const calculator = new Calculator(previousOperandTextElem, currentOperandTextElem);
 numberButtonsElem.forEach(button => {
-    button.addEventListener('click', () => {
+    button.addEventListener('click', (e) => {
         calculator.appendNrCalc(button.innerHTML);
         calculator.updateDisplayCalc();
     });
@@ -42,6 +42,30 @@ allClearButtonElem.addEventListener('click', button => {
 deleteButtonElem.addEventListener('click', button => {
     calculator.deleteCalc();
     calculator.updateDisplayCalc();
+});
+// Add keywords events
+document.body.addEventListener('keyup', (e) => {
+    if (/\d|\./g.test(e.key)) {
+        calculator.appendNrCalc(e.key);
+        calculator.updateDisplayCalc();
+    }
+    if (/[\+\-\*\/]/g.test(e.key)) {
+        calculator.chooseOperationCalc(e.key);
+        calculator.updateDisplayCalc();
+    }
+    if (e.key === "Enter") {
+        calculator.computeCalc(true);
+        calculator.updateDisplayCalc();
+    }
+    if (e.key === "Backspace") {
+        calculator.deleteCalc();
+        calculator.updateDisplayCalc();
+    }
+    if (e.key === "Delete") {
+        calculator.clearCalc();
+        calculator.updateDisplayCalc();
+    }
+    console.log(e.key);
 });
 advanceButtonElem.addEventListener('click', () => {
     advanceCalcContainerElem.classList.toggle('showAdvCalc');
