@@ -109,6 +109,21 @@ export class Calculator {
             case "2√x":
                 computation = Math.sqrt(currentValue);
                 break;
+            case "10<sup>x</sup>":
+                computation = Math.pow(10, currentValue);
+                break;
+            case "log":
+                computation = Math.log(currentValue) / Math.log(10);
+                break;
+            case "sin":
+                computation = +Math.sin((Math.PI / 180) * currentValue).toFixed(10);
+                break;
+            case "cos":
+                computation = +Math.cos((Math.PI / 180) * currentValue).toFixed(10);
+                break;
+            case "tan":
+                computation = +Math.tan((Math.PI / 180) * currentValue).toFixed(10);
+                break;
             default: return;
         }
         this.currentOperand = computation + "";
