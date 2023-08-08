@@ -18,7 +18,14 @@
     }
 }
 
+
 /* Contact container */
+
+@font-face {
+    font-family: 'voyager';
+    src: url('./font/Voyager_Light.otf');
+}
+
 .contact-btn {
     color:black;
     background-color: lightgrey;

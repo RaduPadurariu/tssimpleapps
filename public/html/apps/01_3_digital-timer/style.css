@@ -23,6 +23,12 @@
         max-width: 95%;
     }
 }
+
+@font-face {
+    font-family: 'Digital-7';
+    src: url('./fonts/digital-7.ttf');
+}
+
 .digits {
     display: flex;
     align-items: center;
