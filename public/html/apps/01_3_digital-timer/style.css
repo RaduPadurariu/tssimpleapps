@@ -42,10 +42,7 @@
 .digits-container {
     display: flex;
     flex-direction: column;
-    text-align: center;
     font-family: 'Digital-7', sans-serif;
-    height: 5rem;
-   
 }
 
 #saveData {
