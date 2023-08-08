@@ -24,17 +24,17 @@
     }
 }
 
-@font-face {
+/* @font-face {
     font-family: 'Digital-7';
     src: url('./fonts/digital-7.ttf');
-}
+} */
 
 .digits {
     display: flex;
     align-items: center;
     justify-content: center;
     font-size: 4rem;
-    font-family: "Digital-7";
+    font-family: sans-serif;
     display: flex;
     margin-bottom: 1rem;
 }
