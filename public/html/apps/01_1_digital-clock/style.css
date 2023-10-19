@@ -37,6 +37,10 @@
     text-align: center;
 }
 
+.digit-minutes {
+    display: flex;
+}
+
 
 .counter-container {
     display: flex;

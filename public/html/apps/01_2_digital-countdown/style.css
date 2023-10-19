@@ -89,6 +89,9 @@
     text-align: center;
 }
 
+.digit-mid {
+    display: flex;
+}
 
 .counter-container {
     display: flex;
@@ -128,6 +131,7 @@
 }
 
 #btn-create, #btn-reset {
+    color: black;
     border: none;
     border-radius: 5px;
     font-size: 1.5rem;
