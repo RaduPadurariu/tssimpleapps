@@ -122,7 +122,7 @@ const saveCountDown = (title: string, time: number) => {
         savedCountDown = {name: "", time: 0};
     }
     else {
-        savedCountDown = JSON.parse(localStorage.getItem("todos") || "{}");
+        savedCountDown = JSON.parse(localStorage.getItem("countdown") || "{}");
     }
     let localCountDown: {
         name:string,

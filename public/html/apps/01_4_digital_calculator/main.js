@@ -13,6 +13,11 @@ const advanceCalcContainerElem = document.querySelector('.calcAdv-container');
 const calcContainerElem = document.querySelector('.calculator-container');
 const xSquareYButtonElem = document.querySelector('[data-squareY]');
 const calculator = new Calculator(previousOperandTextElem, currentOperandTextElem);
+// Aliases
+// Interfaces
+// Tuples
+//Functions Signatures
+//Functions
 numberButtonsElem.forEach(button => {
     button.addEventListener('click', (e) => {
         calculator.appendNrCalc(button.innerHTML);
@@ -43,6 +48,7 @@ deleteButtonElem.addEventListener('click', button => {
     calculator.deleteCalc();
     calculator.updateDisplayCalc();
 });
+//Events
 // Add keywords events
 document.body.addEventListener('keyup', (e) => {
     if (/\d|\./g.test(e.key)) {
