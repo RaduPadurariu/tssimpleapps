@@ -11,8 +11,11 @@ const errFinanceElem = document.querySelector('.finance-errorContainer');
 const ulFinanceElem = document.querySelector('.paymentList');
 // Tuples
 let financeTupObj;
+// Functions Signatures
+let getFinanceLogs;
+let removeFinance;
 // Functions
-const getFinanceLogs = () => {
+getFinanceLogs = () => {
     // is there a finance in local storage?
     ulFinanceElem.innerText = "";
     let savedFinance = [];
@@ -38,7 +41,7 @@ const getFinanceLogs = () => {
     }
 };
 getFinanceLogs();
-const removeFinance = (val) => {
+removeFinance = (val) => {
     // is there a finance in local storage?
     let savedFinance;
     if (localStorage.getItem('finance') === null) {

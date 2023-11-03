@@ -1,4 +1,3 @@
-
 import {Invoice} from './classes/Invoice.js';
 import {Payment} from './classes/Payment.js';
 import { HasFormatter } from './interfaces/hasFormatter.js';
@@ -6,13 +5,14 @@ import { ListTemplate } from './classes/ListTemplate.js';
 
 // Selectors
 const formFinanceElem = document.querySelector(".new-item-form") as HTMLFormElement;
-
 const typeFinanceElem = document.querySelector("#payment-type") as HTMLSelectElement;
 const toFromElem = document.querySelector("#payment-tofrom") as HTMLInputElement;
 const detailsFinanceElem = document.querySelector("#payment-details") as HTMLInputElement;
 const amountFinanceElem = document.querySelector("#payment-amount") as HTMLInputElement;
 const errFinanceElem = document.querySelector('.finance-errorContainer') as HTMLSpanElement
 const ulFinanceElem = document.querySelector('.paymentList') as HTMLUListElement;
+
+// Aliases
 
 // Interfaces
 interface IsFinanceObj {
@@ -27,10 +27,13 @@ interface IsFinanceObj {
 
 let financeTupObj: [number, string, string, string, number]
 
+// Functions Signatures
+
+let getFinanceLogs: () => void;
+let removeFinance: (a: number) => void;
 
 // Functions
-
-const getFinanceLogs = () => {
+getFinanceLogs = () => {
     // is there a finance in local storage?
     ulFinanceElem.innerText = ""
     let savedFinance:[] = [];
@@ -59,9 +62,10 @@ const getFinanceLogs = () => {
         
     }
 };
+
 getFinanceLogs();
 
-const removeFinance = (val:number) => {
+removeFinance = (val:number) => {
     // is there a finance in local storage?
     let savedFinance;
     if (localStorage.getItem('finance') === null) {

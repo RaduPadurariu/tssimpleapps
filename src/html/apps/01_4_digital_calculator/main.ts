@@ -1,4 +1,5 @@
 import { Calculator } from "./classes/calculator.js";
+
 // Selectors
 const numberButtonsElem = document.querySelectorAll('[data-number]');
 const operationButtonsElem = document.querySelectorAll('[data-operation]');
@@ -8,14 +9,19 @@ const deleteButtonElem = document.querySelector('[data-delete]') as HTMLDataElem
 const allClearButtonElem = document.querySelector('[data-all-clear]') as HTMLDataElement;
 const previousOperandTextElem = document.querySelector('[data-previous-operand]') as HTMLDataElement;
 const currentOperandTextElem = document.querySelector('[data-current-operand]') as HTMLDataElement;
-
 const advanceButtonElem = document.querySelector('#advanceBtn') as HTMLSpanElement;
 const advanceCalcContainerElem = document.querySelector('.calcAdv-container') as HTMLDivElement;
 const calcContainerElem = document.querySelector('.calculator-container') as HTMLDivElement;
 const xSquareYButtonElem = document.querySelector('[data-squareY]') as HTMLDataElement;
 
-
 const calculator = new Calculator(previousOperandTextElem, currentOperandTextElem)
+
+// Aliases
+// Interfaces
+// Tuples
+//Functions Signatures
+
+//Functions
 
 numberButtonsElem.forEach(button => {
     button.addEventListener('click', (e:Event) => {
@@ -39,7 +45,6 @@ advanceOpButtonElem.forEach(button => {
     
 }) 
 
-
 equalButtonElem.addEventListener('click', button => {
     calculator.computeCalc(true)
     calculator.updateDisplayCalc()
@@ -55,6 +60,8 @@ deleteButtonElem.addEventListener('click', button => {
     calculator.updateDisplayCalc()
 })
 
+
+//Events
 // Add keywords events
 document.body.addEventListener('keyup', (e) => {
     if (/\d|\./g.test(e.key)) {
