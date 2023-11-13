@@ -1,4 +1,4 @@
-import { Calculator } from "./classes/calculator.js";
+import { Calculator } from "./classes/calculator";
 
 // Selectors
 const numberButtonsElem = document.querySelectorAll('[data-number]');
