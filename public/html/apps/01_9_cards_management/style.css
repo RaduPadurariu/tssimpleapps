@@ -1,0 +1,115 @@
+/* Cards Management */
+
+.main-contact {
+  margin: auto 0;
+}
+
+.container-digital {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  background: #aed4ec;
+  border-radius: 10px;
+  width: 100%;
+  max-width: 750px;
+  margin: 1rem 0;
+  text-align: center;
+  box-shadow: 3px 3px 5px 2px #888888;
+  height: 45rem;
+  overflow: auto;
+}
+
+@media (max-width: 800px) {
+  .container-digital {
+    max-width: 95%;
+  }
+}
+
+.cards-container {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+  width: 100%;
+}
+
+.create-card-container {
+  display: flex;
+  justify-content: space-between;
+  width: 90%;
+  margin: 0 auto;
+  align-items: center;
+}
+/* 
+.sort-card-container label {
+  font-size: 1.5rem;
+}
+
+.sort-card-container select {
+  font-size: 1rem;
+  margin-left: 10px;
+  padding: 5px;
+  border-radius: 4px;
+  cursor: pointer;
+  background-color: black;
+  color: #eeeeee;
+  font-weight: bold;
+}
+
+.sort-card-container select option {
+  padding: 2rem;
+} */
+
+.sort-card-container {
+  min-width: 150px;
+  position: relative;
+}
+
+select {
+  appearance: none;
+  /*  safari  */
+  -webkit-appearance: none;
+  /*  other styles for aesthetics */
+  width: 100%;
+  font-size: 1.15rem;
+  padding: 0.5rem 1rem;
+  background-color: #fff;
+  border: 1px solid #caced1;
+  border-radius: 0.25rem;
+  color: #000;
+  cursor: pointer;
+}
+
+.sort-card-container::before,
+.sort-card-container::after {
+  --size: 0.3rem;
+  content: "";
+  position: absolute;
+  right: 1rem;
+  pointer-events: none;
+}
+
+.sort-card-container::before {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-bottom: var(--size) solid black;
+  top: 40%;
+}
+
+.sort-card-container::after {
+  border-left: var(--size) solid transparent;
+  border-right: var(--size) solid transparent;
+  border-top: var(--size) solid black;
+  top: 55%;
+}
+
+.add-card-button {
+  background: darkgreen;
+  color: white;
+  font-size: 1.5rem;
+  padding: 5px 20px;
+  border-radius: 5px;
+  border: none;
+  outline: none;
+  cursor: pointer;
+}
